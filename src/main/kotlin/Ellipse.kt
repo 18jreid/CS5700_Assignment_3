@@ -1,3 +1,8 @@
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.drawscope.DrawScope
+
 open class Ellipse(private var centerPoint: Point, private var horizontalRadius: Double, private var verticalRadius: Double): Shape() {
     // Checks if the area is greater than 0, if not throw an error
     init {
@@ -40,5 +45,13 @@ open class Ellipse(private var centerPoint: Point, private var horizontalRadius:
      */
     override fun move(deltaX: Double, deltaY: Double) {
         this.centerPoint.movePoint(deltaX, deltaY)
+    }
+
+    override fun draw(scope: DrawScope) {
+        scope.drawOval(
+            topLeft = Offset(centerPoint.getXCoordinate().toFloat(), centerPoint.getYCoordinate().toFloat()),
+            size = Size(horizontalRadius.toFloat(), verticalRadius.toFloat()),
+            color = Color.Black
+        )
     }
 }

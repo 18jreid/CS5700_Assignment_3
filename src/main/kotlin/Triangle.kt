@@ -1,3 +1,4 @@
+import androidx.compose.ui.graphics.drawscope.DrawScope
 import kotlin.math.abs
 
 class Triangle(private var vertexOne: Point, private var vertexTwo: Point, private var vertexThree: Point): Shape() {
@@ -42,5 +43,9 @@ class Triangle(private var vertexOne: Point, private var vertexTwo: Point, priva
         vertexOne.movePoint(deltaX, deltaY)
         vertexTwo.movePoint(deltaX, deltaY)
         vertexThree.movePoint(deltaX, deltaY)
+    }
+
+    override fun draw(scope: DrawScope) {
+        TODO("Not yet implemented")
     }
 }

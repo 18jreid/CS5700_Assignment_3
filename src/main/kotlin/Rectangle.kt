@@ -1,3 +1,7 @@
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.drawscope.DrawScope
 import kotlin.math.abs
 
 open class Rectangle(private var pointOne: Point, private var pointTwo: Point): Shape() {
@@ -52,5 +56,13 @@ open class Rectangle(private var pointOne: Point, private var pointTwo: Point): 
     override fun move(deltaX: Double, deltaY: Double) {
         this.pointOne.movePoint(deltaX, deltaY)
         this.pointTwo.movePoint(deltaX, deltaY)
+    }
+
+    override fun draw(scope: DrawScope) {
+        scope.drawRect(
+            topLeft = Offset(pointOne.getXCoordinate().toFloat(), pointOne.getYCoordinate().toFloat()),
+            size = Size(getWidth().toFloat(), getHeight().toFloat()),
+            color = Color.Blue
+        )
     }
 }
