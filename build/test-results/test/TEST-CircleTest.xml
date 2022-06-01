@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CircleTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-05-16T04:33:18" hostname="Justins-MacBook-Pro.local" time="0.054">
+  <properties/>
+  <testcase name="getVerticalRadius()" classname="CircleTest" time="0.016"/>
+  <testcase name="calculateArea()" classname="CircleTest" time="0.001"/>
+  <testcase name="move()" classname="CircleTest" time="0.001"/>
+  <testcase name="getHorizontalRadius()" classname="CircleTest" time="0.001"/>
+  <testcase name="checkIfAreaIsZero()" classname="CircleTest" time="0.034"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
