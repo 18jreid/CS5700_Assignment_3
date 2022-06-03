@@ -2,11 +2,9 @@
 import androidx.compose.material.MaterialTheme
 import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -19,6 +17,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 
@@ -27,26 +26,44 @@ import androidx.compose.ui.window.application
 fun App() {
     val drawing = remember { Drawing() }
     val viewHelper = remember { ViewHelper(drawing) }
+    var scale = remember { mutableStateOf("1") }
 
     MaterialTheme {
         Column {
             Row {
                 Button(onClick = {
                     viewHelper.setCommand(DrawCircleCommand())
-                }) {
+                }, modifier = Modifier.padding(10.dp)) {
                     Text("Circle")
                 }
                 Button(onClick = {
+                    viewHelper.setCommand(DrawEllipseCommand())
+                }, modifier = Modifier.padding(10.dp)) {
+                    Text("Ellipse")
+                }
+                Button(onClick = {
+                    viewHelper.setCommand(DrawSquareCommand())
+                }, modifier = Modifier.padding(10.dp)) {
+                    Text("Square")
+                }
+                Button(onClick = {
                     viewHelper.setCommand(DrawRectCommand())
-                }) {
+                }, modifier = Modifier.padding(10.dp)) {
                     Text("Rect")
+                }
+                Button(onClick = {
+                    viewHelper.setCommand(DrawTriangleCommand())
+                }, modifier = Modifier.padding(10.dp)) {
+                    Text("Triangle")
                 }
             }
             Row {
                 Canvas(modifier = Modifier
                     .fillMaxWidth()
                     .fillMaxHeight()
-                    .pointerInput(Unit) {
+                    .background(color = Color.LightGray)
+                    .pointerInput(Unit)
+                     {
                         detectTapGestures {
                             viewHelper.executeCommand(it)
                         }

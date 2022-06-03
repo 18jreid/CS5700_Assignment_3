@@ -1,3 +1,7 @@
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.drawscope.DrawScope
+
 class Square(pointOne: Point, pointTwo: Point) : Rectangle(pointOne, pointTwo) {
     // Check if width and height are equal
     init {

@@ -51,7 +51,7 @@ open class Ellipse(private var centerPoint: Point, private var horizontalRadius:
         scope.drawOval(
             topLeft = Offset(centerPoint.getXCoordinate().toFloat(), centerPoint.getYCoordinate().toFloat()),
             size = Size(horizontalRadius.toFloat(), verticalRadius.toFloat()),
-            color = Color.Black
+            color = Color.Blue
         )
     }
 }

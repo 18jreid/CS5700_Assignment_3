@@ -1,3 +1,6 @@
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import kotlin.math.abs
 
@@ -46,6 +49,20 @@ class Triangle(private var vertexOne: Point, private var vertexTwo: Point, priva
     }
 
     override fun draw(scope: DrawScope) {
-        TODO("Not yet implemented")
+        scope.drawLine(
+            Brush.linearGradient(colors = listOf(Color.Blue, Color.Blue)),
+            Offset(vertexOne.getXCoordinate().toFloat(), vertexOne.getYCoordinate().toFloat()),
+            Offset(vertexTwo.getXCoordinate().toFloat(), vertexTwo.getYCoordinate().toFloat()),
+            )
+        scope.drawLine(
+            Brush.linearGradient(colors = listOf(Color.Blue, Color.Blue)),
+            Offset(vertexTwo.getXCoordinate().toFloat(), vertexTwo.getYCoordinate().toFloat()),
+            Offset(vertexThree.getXCoordinate().toFloat(), vertexThree.getYCoordinate().toFloat()),
+        )
+        scope.drawLine(
+            Brush.linearGradient(colors = listOf(Color.Blue, Color.Blue)),
+            Offset(vertexThree.getXCoordinate().toFloat(), vertexThree.getYCoordinate().toFloat()),
+            Offset(vertexOne.getXCoordinate().toFloat(), vertexOne.getYCoordinate().toFloat()),
+        )
     }
 }
