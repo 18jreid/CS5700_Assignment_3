@@ -6,5 +6,5 @@ pluginManagement {
     }
     
 }
-rootProject.name = "MicrosoftPaint"
+rootProject.name = "untitled"
 

@@ -17,7 +17,12 @@ repositories {
 }
 
 dependencies {
+    testImplementation(kotlin("test"))
     implementation(compose.desktop.currentOs)
+}
+
+tasks.test {
+    useJUnitPlatform()
 }
 
 tasks.withType<KotlinCompile> {
@@ -29,7 +34,7 @@ compose.desktop {
         mainClass = "MainKt"
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "MicrosoftPaint"
+            packageName = "untitled"
             packageVersion = "1.0.0"
         }
     }
