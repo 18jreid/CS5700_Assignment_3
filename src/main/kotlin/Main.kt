@@ -20,13 +20,14 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
+import java.io.File
+import java.io.PrintWriter
 
 @Composable
 @Preview
 fun App() {
     val drawing = remember { Drawing() }
     val viewHelper = remember { ViewHelper(drawing) }
-    var scale = remember { mutableStateOf("1") }
 
     MaterialTheme {
         Column {
@@ -55,6 +56,38 @@ fun App() {
                     viewHelper.setCommand(DrawTriangleCommand())
                 }, modifier = Modifier.padding(10.dp)) {
                     Text("Triangle")
+                }
+                Button(onClick = {
+                    viewHelper.setCommand(DrawPentagonCommand())
+                }, modifier = Modifier.padding(10.dp)) {
+                    Text("Pentagon")
+                }
+            }
+            Row {
+                Button(onClick = {
+                    val myNewFile = File("Output.txt")
+                    var myString = ""
+
+                    drawing.shapes.forEach { shape ->
+                        myString += shape.toString() + "area: "  + shape.calculateArea() + "\n"
+                    }
+
+                    myNewFile.writeText(myString)
+                }, modifier = Modifier.padding(10.dp)) {
+                    Text("Write to txt as string")
+                }
+
+                Button(onClick = {
+                    val myNewFile = File("Output.txt")
+                    var myString = ""
+
+                    drawing.shapes.forEach { shape ->
+                        myString += shape.hashCode().toString() + "\n"
+                    }
+
+                    myNewFile.writeText(myString)
+                }, modifier = Modifier.padding(10.dp)) {
+                    Text("Write to txt as hashcode")
                 }
             }
             Row {
